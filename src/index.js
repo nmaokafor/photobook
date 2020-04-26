@@ -13,9 +13,8 @@ const store = createStore(rootReducer);
 
 ReactDOM.render(<Provider store={store}><BrowserRouter>
     <Switch>
-        <Main/>
-        <Route exact path="/" component={Home}/>
         <Route exact path="/photobook" component={Main}/>
+        <Route exact path="/" component={Main}/>
     </Switch>
     
 </BrowserRouter></Provider>, document.getElementById('root'));
@@ -23,4 +22,4 @@ ReactDOM.render(<Provider store={store}><BrowserRouter>
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+serviceWorker.register();
