@@ -1,15 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
+import Main from './Components/Main';
+import Home from './Components/Main';
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import {createStore} from 'redux';
+import rootReducer from './redux/reducer';
+import {Provider} from 'react-redux';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const store = createStore(rootReducer);
+
+ReactDOM.render(<Provider store={store}><BrowserRouter>
+    <Switch>
+        <Main/>
+        <Route exact path="/" component={Home}/>
+        <Route exact path="/photobook" component={Main}/>
+    </Switch>
+    
+</BrowserRouter></Provider>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
